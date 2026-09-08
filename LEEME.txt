@@ -1,0 +1,5 @@
+Clínica Aurora — sitio web + CMS (entrega del sprint)
+=====================================================
+
+Credenciales asesora: asesora / AuroraAsesora2026
+Panel: /admin
