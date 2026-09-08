@@ -1,15 +1,18 @@
 # Clínica Aurora
 
-Sitio web institucional y CMS (Aurora Editorial) para la entrega del sprint.
+Sitio web institucional + CMS Aurora Editorial (entrega del sprint).
 
-## URL
+## Deploy
 
-Despliega en [Vercel](https://vercel.com): Import this repo → Deploy.
+1. Importa este repo en [Vercel](https://vercel.com/new).
+2. Build Command: `npm run build` (ya está en package.json).
+3. Deploy. La URL pública va en el buzón de la materia.
 
 ## CMS
 
 - Panel: `/admin`
 - Asesora: `asesora` / `AuroraAsesora2026`
+- Equipo: `nikolai` / `EquipoAurora2026`
 
 ## Páginas
 
