@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mark } from "@/components/site/logo";
+import { SocialLinks } from "@/components/site/social-links";
 import { CLINIC } from "@/lib/cms/defaults";
 import { useCms } from "@/lib/cms/store";
 
@@ -23,6 +24,8 @@ export function SiteFooter() {
           <p className="mt-5 max-w-md text-sm leading-relaxed text-admin-muted">
             Clínica de atención integral en Providencia. Consulta, laboratorio y acompañamiento con un sistema de calidad pensado para quien nos visita.
           </p>
+          <p className="mt-6 text-xs uppercase tracking-[0.18em] text-admin-muted">Redes sociales</p>
+          <SocialLinks invert className="mt-3" />
         </div>
         <div>
           <p className="text-xs uppercase tracking-[0.18em] text-admin-muted">Sitio</p>

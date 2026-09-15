@@ -56,3 +56,52 @@ export type ContactMessage = {
   message: string;
   createdAt: string;
 };
+
+export type ChatAuthor = "visitante" | "recepcion";
+
+export type ChatMessage = {
+  id: string;
+  author: ChatAuthor;
+  name: string;
+  text: string;
+  createdAt: string;
+};
+
+export type FaqReply = {
+  id: string;
+  author: string;
+  text: string;
+  createdAt: string;
+};
+
+export type FaqThread = {
+  id: string;
+  title: string;
+  body: string;
+  author: string;
+  createdAt: string;
+  replies: FaqReply[];
+};
+
+export type SocialNetwork = "facebook" | "instagram" | "x" | "whatsapp";
+
+export type SocialLink = {
+  id: string;
+  network: SocialNetwork;
+  label: string;
+  href: string;
+  visible: boolean;
+};
+
+export type SliderSlide = {
+  id: string;
+  src: string;
+  alt: string;
+  caption: string;
+  visible: boolean;
+};
+
+export type PageRatingStat = {
+  sum: number;
+  count: number;
+};

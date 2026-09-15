@@ -1,5 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { FileText, IdCard, LayoutDashboard, LogOut, Menu, Palette, Users } from "lucide-react";
+import {
+  FileText, IdCard, Images, LayoutDashboard, LogOut, Menu,
+  MessageCircle, MessagesSquare, Palette, Share2, Star, Users,
+} from "lucide-react";
 import type { ReactNode } from "react";
 import { Mark } from "@/components/site/logo";
 import { Button } from "@/components/ui/button";
@@ -13,6 +16,11 @@ const NAV = [
   { href: "/admin/menu", label: "Menú principal", icon: Menu },
   { href: "/admin/apariencia", label: "Apariencia", icon: Palette },
   { href: "/admin/identidad", label: "Identidad", icon: IdCard },
+  { href: "/admin/chat", label: "Chat", icon: MessageCircle },
+  { href: "/admin/foro", label: "Foro FAQ", icon: MessagesSquare },
+  { href: "/admin/redes", label: "Redes", icon: Share2 },
+  { href: "/admin/slider", label: "Slider", icon: Images },
+  { href: "/admin/valoraciones", label: "Valoraciones", icon: Star },
 ];
 
 export function AdminShell({ children }: { children: ReactNode }) {
@@ -34,14 +42,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
           {NAV.map((item) => {
             const active = item.href === "/admin" ? pathname === "/admin" : pathname.startsWith(item.href);
             return (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={cn(
-                  "flex h-11 shrink-0 items-center gap-2 rounded-md px-3 text-sm text-admin-muted transition-colors hover:bg-admin-line hover:text-admin-fg",
-                  active && "bg-admin-line text-admin-fg",
-                )}
-              >
+              <Link key={item.href} to={item.href} className={cn("flex h-11 shrink-0 items-center gap-2 rounded-md px-3 text-sm text-admin-muted transition-colors hover:bg-admin-line hover:text-admin-fg", active && "bg-admin-line text-admin-fg")}>
                 <item.icon className="size-4" />
                 {item.label}
               </Link>
