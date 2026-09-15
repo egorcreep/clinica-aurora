@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, FlaskConical, HeartPulse, Leaf, MapPin } from "lucide-react";
+import { ImageSlider } from "@/components/site/image-slider";
 import { SiteLayout } from "@/components/site/layout";
 import { Button } from "@/components/ui/button";
 import { CLINIC } from "@/lib/cms/defaults";
@@ -13,10 +14,9 @@ function Home() {
   return (
     <SiteLayout>
       <section className="relative overflow-hidden">
-        <img src="/images/lobby.jpg" alt="Recepción de Clínica Aurora, con luz de mañana y sillas color salvia" className="h-[78vh] min-h-[520px] w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/25 to-ink/10" />
-        <div className="absolute inset-0 flex items-end">
-          <div className="mx-auto w-full max-w-6xl px-4 pb-14 sm:px-6 sm:pb-20">
+        <ImageSlider className="h-[78vh] min-h-[520px]" />
+        <div className="pointer-events-none absolute inset-0 flex items-end">
+          <div className="pointer-events-auto mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20">
             <p className="text-xs font-medium uppercase tracking-[0.24em] text-primary-fg/80">Providencia · Guadalajara</p>
             <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[0.95] tracking-tight text-bg sm:text-6xl lg:text-7xl">{identity.name}</h1>
             <p className="mt-5 max-w-xl text-lg text-bg/85 sm:text-xl">{identity.tagline} Un espacio pequeño para consultas que no se sienten de prisa.</p>
