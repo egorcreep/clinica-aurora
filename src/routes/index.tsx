@@ -14,25 +14,6 @@ function Home() {
 
   return (
     <SiteLayout>
-      <div className="border-b border-border bg-paper">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p className="text-sm text-muted">
-            Entrega del sprint: descarga el ZIP del sitio y el PDF para el buzón.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <Button asChild size="sm">
-              <a href="/Clinica-Aurora-sitio.zip" download>
-                Descargar ZIP
-              </a>
-            </Button>
-            <Button asChild size="sm" variant="outline">
-              <a href="/Entrega-Sprint-Clinica-Aurora.pdf" download>
-                Descargar PDF
-              </a>
-            </Button>
-          </div>
-        </div>
-      </div>
       <section className="relative overflow-hidden">
         <ImageSlider className="h-[78vh] min-h-[520px]" />
         <div className="pointer-events-none absolute inset-0 flex items-end">
