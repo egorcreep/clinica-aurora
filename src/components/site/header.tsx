@@ -1,14 +1,17 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, ShoppingBag, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/site/logo";
 import { Button } from "@/components/ui/button";
 import { useCms } from "@/lib/cms/store";
+import { useCart } from "@/lib/cart/store";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const menu = useCms((s) => s.menu);
   const session = useCms((s) => s.session);
+  const lines = useCart((s) => s.lines);
+  const cartCount = lines.reduce((sum, line) => sum + line.qty, 0);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
   const [institucionalOpen, setInstitucionalOpen] = useState(false);
@@ -75,6 +78,17 @@ export function SiteHeader() {
           })}
         </nav>
         <div className="flex items-center gap-2">
+          <Button asChild variant="outline" size="sm" className="relative">
+            <Link to="/carrito" aria-label={cartCount ? `Cesta, ${cartCount} servicios` : "Cesta"}>
+              <ShoppingBag className="size-4" />
+              <span className="hidden sm:inline">Cesta</span>
+              {cartCount > 0 ? (
+                <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 text-[11px] text-primary-fg">
+                  {cartCount}
+                </span>
+              ) : null}
+            </Link>
+          </Button>
           <Button asChild size="sm" className="hidden sm:inline-flex">
             <Link to="/contacto">Agendar</Link>
           </Button>
@@ -107,11 +121,20 @@ export function SiteHeader() {
                       onClick={() => setInstitucionalOpen((v) => !v)}
                     >
                       {item.label}
-                      <ChevronDown className={cn("size-4 transition-transform", institucionalOpen && "rotate-180")} />
+                      <ChevronDown
+                        className={cn(
+                          "size-4 transition-transform",
+                          institucionalOpen && "rotate-180",
+                        )}
+                      />
                     </button>
                     {institucionalOpen
                       ? children.map((child) => (
-                          <Link key={child.id} to={child.href} className="block h-12 rounded-md px-6 text-base leading-[48px] text-muted">
+                          <Link
+                            key={child.id}
+                            to={child.href}
+                            className="block h-12 rounded-md px-6 text-base leading-[48px] text-muted"
+                          >
                             {child.label}
                           </Link>
                         ))
@@ -120,12 +143,25 @@ export function SiteHeader() {
                 );
               }
               return (
-                <Link key={item.id} to={item.href} className="flex h-12 items-center rounded-md px-3 text-base text-ink">
+                <Link
+                  key={item.id}
+                  to={item.href}
+                  className="flex h-12 items-center rounded-md px-3 text-base text-ink"
+                >
                   {item.label}
                 </Link>
               );
             })}
-            <Link to="/admin" className="flex h-12 items-center rounded-md px-3 text-base text-ink">
+            <Link
+              to="/carrito"
+              className="flex h-12 items-center rounded-md px-3 text-base text-ink"
+            >
+              Cesta{cartCount > 0 ? ` (${cartCount})` : ""}
+            </Link>
+            <Link
+              to="/admin"
+              className="flex h-12 items-center rounded-md px-3 text-base text-ink"
+            >
               {session ? "Panel de administración" : "Acceso al CMS"}
             </Link>
           </nav>
