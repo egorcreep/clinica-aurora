@@ -3,6 +3,7 @@
 @theme {
   --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
   --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+
   --color-bg: #f6f1e8;
   --color-paper: #fbf7f0;
   --color-surface: #efe8dc;
@@ -22,6 +23,7 @@
   --color-danger: #8f3d3d;
   --color-danger-fg: #fbf7f0;
   --color-ring: #2f6b5a;
+
   --radius-xs: 0.25rem;
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
@@ -30,9 +32,117 @@
 }
 
 @layer base {
-  html { -webkit-font-smoothing: antialiased; background: var(--color-bg); color: var(--color-fg); }
-  body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-fg); min-height: 100dvh; }
-  h1, h2, h3, h4 { text-wrap: balance; }
-  p { text-wrap: pretty; }
-  button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    min-height: 100dvh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-primary) 28%, transparent);
+    color: var(--color-ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes motion-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes motion-ken {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.07);
+  }
+}
+
+@keyframes motion-ecg {
+  to {
+    stroke-dashoffset: -640;
+  }
+}
+
+@keyframes motion-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(12%, -8%, 0) scale(1.12);
+  }
+}
+
+@keyframes motion-ring {
+  0% {
+    transform: scale(0.72);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+.motion-rise {
+  animation: motion-rise 700ms ease-out both;
+}
+
+.motion-ken {
+  animation: motion-ken 9s ease-out both;
+}
+
+.motion-ecg {
+  stroke-dasharray: 160 480;
+  animation: motion-ecg 2.8s linear infinite;
+}
+
+.motion-drift {
+  animation: motion-drift 9s ease-in-out infinite;
+}
+
+.motion-ring {
+  animation: motion-ring 2.6s ease-out infinite;
 }
