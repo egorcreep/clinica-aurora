@@ -15,6 +15,7 @@ import { Route as CarritoRouteImport } from './routes/carrito'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as EntregaRouteImport } from './routes/entrega'
 import { Route as ForoRouteImport } from './routes/foro'
+import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as MisionRouteImport } from './routes/mision'
 import { Route as PedidoRouteImport } from './routes/pedido'
 import { Route as PoliticasRouteImport } from './routes/politicas'
@@ -62,6 +63,11 @@ const EntregaRoute = EntregaRouteImport.update({
 const ForoRoute = ForoRouteImport.update({
   id: '/foro',
   path: '/foro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MisionRoute = MisionRouteImport.update({
@@ -162,6 +168,7 @@ export interface FileRoutesByFullPath {
   '/contacto': typeof ContactoRoute
   '/entrega': typeof EntregaRoute
   '/foro': typeof ForoRoute
+  '/galeria': typeof GaleriaRoute
   '/mision': typeof MisionRoute
   '/pedido': typeof PedidoRoute
   '/politicas': typeof PoliticasRoute
@@ -187,6 +194,7 @@ export interface FileRoutesByTo {
   '/contacto': typeof ContactoRoute
   '/entrega': typeof EntregaRoute
   '/foro': typeof ForoRoute
+  '/galeria': typeof GaleriaRoute
   '/mision': typeof MisionRoute
   '/pedido': typeof PedidoRoute
   '/politicas': typeof PoliticasRoute
@@ -214,6 +222,7 @@ export interface FileRoutesById {
   '/contacto': typeof ContactoRoute
   '/entrega': typeof EntregaRoute
   '/foro': typeof ForoRoute
+  '/galeria': typeof GaleriaRoute
   '/mision': typeof MisionRoute
   '/pedido': typeof PedidoRoute
   '/politicas': typeof PoliticasRoute
@@ -242,6 +251,7 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/entrega'
     | '/foro'
+    | '/galeria'
     | '/mision'
     | '/pedido'
     | '/politicas'
@@ -267,6 +277,7 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/entrega'
     | '/foro'
+    | '/galeria'
     | '/mision'
     | '/pedido'
     | '/politicas'
@@ -293,6 +304,7 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/entrega'
     | '/foro'
+    | '/galeria'
     | '/mision'
     | '/pedido'
     | '/politicas'
@@ -320,6 +332,7 @@ export interface RootRouteChildren {
   ContactoRoute: typeof ContactoRoute
   EntregaRoute: typeof EntregaRoute
   ForoRoute: typeof ForoRoute
+  GaleriaRoute: typeof GaleriaRoute
   MisionRoute: typeof MisionRoute
   PedidoRoute: typeof PedidoRoute
   PoliticasRoute: typeof PoliticasRoute
@@ -371,6 +384,13 @@ declare module '@tanstack/react-router' {
       path: '/foro'
       fullPath: '/foro'
       preLoaderRoute: typeof ForoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mision': {
@@ -539,6 +559,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactoRoute: ContactoRoute,
   EntregaRoute: EntregaRoute,
   ForoRoute: ForoRoute,
+  GaleriaRoute: GaleriaRoute,
   MisionRoute: MisionRoute,
   PedidoRoute: PedidoRoute,
   PoliticasRoute: PoliticasRoute,
